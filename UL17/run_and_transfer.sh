@@ -18,7 +18,7 @@ export X509_USER_PROXY=$PWD/x509up_u152815
 # wget --tries=3 https://github.com/colizz/hww-tagging/archive/refs/heads/dev-miniaods.tar.gz
 # tar xaf dev-miniaods.tar.gz
 # mv hww-tagging-dev-miniaods/event_producer/cmsconnect_miniaods_UL17/{inputs,fragments} .
-rsync -a /afs/cern.ch/user/j/jiehan/private/HiggsZGammaAna/Generate_samples/UL17/{inputs,fragments} . # test-only
+rsync -a /afs/cern.ch/user/j/jiehan/private/Generate_samples/UL17/{inputs,fragments} . # test-only
 
 xrdcp root://cmseos.fnal.gov//store/user/lpcdihiggsboost/MINIAOD/ParTSamples/MG5_aMC_v2.6.5.tar.gz inputs/MG5_aMC_v2.6.5.tar.gz
 
