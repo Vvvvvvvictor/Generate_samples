@@ -4,10 +4,11 @@ Executable = run_and_transfer.sh
 +ProjectName="cms.org.cern"
 
 # custom args
-NEVENT = 500
+NEVENT = 10
 NTHREAD = 1
 PROCNAME = GluGluHToZG_ZToLL_TuneCP5_13TeV_madgraphMLM_pythia8
-EOSPATH = /eos/user/j/jiehan/Signal_madgraph_for_ML/GluGluHToZG_ZToLL_TuneCP5_13TeV_madgraphMLM_pythia8/24UL17/
+# EOSPATH = /eos/user/j/jiehan/Signal_madgraph_for_ML/GluGluHToZG_ZToLL_TuneCP5_13TeV_madgraphMLM_pythia8/24UL17/
+EOSPATH = root://cmseos.fnal.gov//store/user/j/jiehan/Signal_madgraph_for_ML/GluGluHToZG_ZToLL_TuneCP5_13TeV_madgraphMLM_pythia8/24UL17/
 # this dictates how often the config will change (i.e., how often different H, X masses are sampled)
 NEVENTLUMIBLOCK = 10
 
@@ -28,9 +29,9 @@ Output     = log/job.out_$(Cluster)-$(Process)
 Error      = log/job.err_$(Cluster)-$(Process)
 
 should_transfer_files   = YES
-transfer_input_files    = /afs/cern.ch/user/j/jiehan/private/HiggsZGammaAna/HiggsDNA/x509up_u152815
+# transfer_input_files    = /afs/cern.ch/user/j/jiehan/private/HiggsZGammaAna/HiggsDNA/x509up_u152815
 when_to_transfer_output = ON_EXIT_OR_EVICT
 transfer_output_files   = dummy.cc
 
-Queue JOBNUM from seq 1 6000 |
+Queue JOBNUM from seq 1 10 |
 # 6000
