@@ -16,14 +16,14 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
 )
 
 import numpy as np
-m_higgs = np.arange(95, 180, 1)
+m_higgs = np.arange(95, 185, 1)
 # print(mpoints)
 
 for mh in m_higgs:
     # print('BulkGravitonToHH_MX%.0f_MH%.0f' % (mx, mh))
     generator.RandomizedParameters.append(
         cms.PSet(
-            ConfigWeight = cms.double(1),
+            ConfigWeight = cms.double(1000 * np.exp(-0.077*(mh-95.0))),
             # what gridpack to use
             GridpackPath =  cms.string('instMG://GluGluHToZG_ZToLL_TuneCP5_13TeV_madgraphMLM_pythia8/MG5_aMC_v2.6.5/%.0f' % (mh)),
             ConfigDescription = cms.string('GluGluHToZG_ZToLL_M%.0f_TuneCP5_13TeV_madgraphMLM_pythia8' % (mh)),

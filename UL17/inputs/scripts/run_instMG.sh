@@ -123,6 +123,7 @@ echo "set auto_update 0" > mgconfigscript
 echo "set automatic_html_opening False" >> mgconfigscript
 LHAPDFCONFIG=`echo "$LHAPDF_DATA_PATH/../../bin/lhapdf-config"`
 echo "set lhapdf $LHAPDFCONFIG" >> mgconfigscript
+echo "set run_mode 1" >> mgconfigscript
 echo "save options" >> mgconfigscript
 
 ./bin/mg5_aMC mgconfigscript
@@ -149,14 +150,13 @@ done
 # write launching script (customized config inside)
 echo "done" > makegrid.dat
 echo "set gridpack False" >> makegrid.dat  # disable gridpack mode
-echo "set nevents $NEVENT" >> makegrid.dat 
+echo "set nevents $NEVENT" >> makegrid.dat
 echo "set iseed $RNUM" >> makegrid.dat
-
 cat customizecards.dat >> makegrid.dat
 echo "done" >> makegrid.dat
 
 # launch
-cat makegrid.dat | ./bin/generate_events pilotrun
+cat makegrid.dat | ./bin/generate_events pilotrun --nb_core=1
 
 gzip -d ./Events/pilotrun/unweighted_events.lhe.gz
 mv ./Events/pilotrun/unweighted_events.lhe $WORKDIR/../cmsgrid_final.lhe
