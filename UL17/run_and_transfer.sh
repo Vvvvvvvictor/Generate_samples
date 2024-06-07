@@ -11,13 +11,17 @@
 ## 6. use provided DIGI cfg
 ## 7. stop running dnntuples
 
-export X509_USER_PROXY=$PWD/x509up_u152815
+# export X509_USER_PROXY=$PWD/x509up_u152815
 
-# sleep $(( ( RANDOM % 200 ) + 1 ))
+sleep $(( ( RANDOM % 200 ) + 1 ))
 
-wget --tries=3 https://github.com/colizz/hww-tagging/archive/refs/heads/dev-miniaods.tar.gz
-tar xaf dev-miniaods.tar.gz
-mv hww-tagging-dev-miniaods/event_producer/cmsconnect_miniaods_UL17/{inputs,fragments} .
+wget --tries=3 https://github.com/Vvvvvvvictor/Generate_samples/archive/refs/heads/cmscon.tar.gz
+tar xaf cmscon.tar.gz
+mv Generate_samples-cmscon/UL17/{inputs,fragments} .
+
+# wget --tries=3 https://github.com/colizz/hww-tagging/archive/refs/heads/dev-miniaods.tar.gz
+# tar xaf dev-miniaods.tar.gz
+# mv hww-tagging-dev-miniaods/event_producer/cmsconnect_miniaods_UL17/{inputs,fragments} .
 # rsync -a /afs/cern.ch/user/j/jiehan/private/HiggsZGammaAna/Generate_samples/UL17/{inputs,fragments} . # test-only
 
 xrdcp root://cmseos.fnal.gov//store/user/lpcdihiggsboost/MINIAOD/ParTSamples/MG5_aMC_v2.6.5.tar.gz inputs/MG5_aMC_v2.6.5.tar.gz
@@ -144,7 +148,7 @@ cmsRun -j FrameworkJobReport.xml NanoAODv9_cfg.py # produce FrameworkJobReport.x
 # cmsRun -j FrameworkJobReport.xml MiniAODv2_cfg.py
 
 # Transfer file
-xrdcp --silent -p -f nanov9.root $EOSPATH/${PROCNAME}_${PROCESS}.root
+xrdcp --silent -p -f nanov9.root ${EOSPATH}${PROCNAME}_${PROCESS}.root
 touch dummy.cc
 
 # ############ Start DNNTuples ############
