@@ -20,7 +20,7 @@ BEGINSEED = 100000
 Arguments = $(JOBNUM) $(NEVENT) $(NEVENTLUMIBLOCK) $(NTHREAD) $(PROCNAME) $(BEGINSEED) $(EOSPATH) $(Process) $(LHEPRODSCRIPT)
 
 requirements = (OpSysAndVer =?= "CentOS7")
-request_cpus = 1
+request_cpus = 2
 request_memory = 3000
 request_disk = 5000
 use_x509userproxy = true
